@@ -10,13 +10,40 @@ $(document).ready(function(){
 		
 		var href = $(this).attr('href');
 		
-		$.get(href,function(employee,status){
+		var text = $(this).text();
+		
+		if(text=='Edit'){
+			$.get(href,function(employee,status){
 			
-			$('.forms #id').val(employee.id);
-			$('.forms #first_name').val(employee.first_name);
-			$('.forms #last_name').val(employee.last_name);
-			$('.forms #email').val(employee.email);
-		});
-		$('.forms #exampleModalLong').modal();
+				$('.forms #id').val(employee.id);
+				$('.forms #first_name').val(employee.first_name);
+				$('.forms #last_name').val(employee.last_name);
+				$('.forms #email').val(employee.email);
+			});
+			
+			$('.forms #exampleModalLong').modal();
+		
+		}else{
+			
+			$('.forms #id').val(0);
+			$('.forms #Eid').hide();
+			$('.forms #first_name').val('');
+			$('.forms #last_name').val('');
+			$('.forms #email').val('');
+			
+			$('.forms #exampleModalLong').modal();
+		}
+		
+	});
+	
+	$('.table .delBtn').on('click',function(e){
+		
+		e.preventDefault();
+		
+		var href = $(this).attr('href');
+		
+		$('#deleteModal #delRef').attr('href',href);
+		
+		$('#deleteModal').modal();
 	});
 });
