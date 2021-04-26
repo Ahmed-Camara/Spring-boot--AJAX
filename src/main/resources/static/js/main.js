@@ -35,4 +35,15 @@ $(document).ready(function(){
 		}
 		
 	});
+	
+	$('.table .delBtn').on('click',function(e){
+		
+		e.preventDefault();
+		
+		var href = $(this).attr('href');
+		
+		$('#deleteModal #delRef').attr('href',href);
+		
+		$('#deleteModal').modal();
+	});
 });
